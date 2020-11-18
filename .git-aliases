@@ -1,0 +1,20 @@
+[alias]
+    bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
+    rui = "! ~/bash-scripts/git-remove-unused-imports"
+    ruc = "! ~/bash-scripts/git-remove-unused-code"
+    cbn = "! ~/bash-scripts/git-commit-with-branchNumber"
+    new = "!f() { branchName=${1}; git ct develop && git pull && git cb $branchName;  }; f"
+    up = !git fetch && git merge origin/develop
+    upm = !git fetch && git merge origin/master
+    ps = push
+    ct = checkout
+    cb = checkout -b
+    st = status -sb
+    sf = show --name-only
+    lg = log --pretty=format:'%Cred%h%Creset %C(bold)%cr%Creset %Cgreen<%an>%Creset %s' --max-count=30
+    incoming = !(git fetch --quiet && git log --pretty=format:'%C(yellow)%h %C(white)- %C(red)%an %C(white)- %C(cyan)%d%Creset %s %C(white)- %ar%Creset' ..@{u})
+    outgoing = !(git fetch --quiet && git log --pretty=format:'%C(yellow)%h %C(white)- %C(red)%an %C(white)- %C(cyan)%d%Creset %s %C(white)- %ar%Creset' @{u}..)
+    unstage = reset HEAD --
+    undo = checkout --
+    rollback = reset --soft HEAD~1
+    stash-staged = "! ~/bash-scripts/git-only-stash-staged"

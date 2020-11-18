@@ -1,0 +1,6 @@
+#!/bin/bash
+
+subject=$*;
+
+git stash push -m "$subject" -- $(git diff --staged --name-only);
+

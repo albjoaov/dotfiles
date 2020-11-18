@@ -1,0 +1,16 @@
+#!/bin/bash
+
+currentBranch=$(git rev-parse --abbrev-ref HEAD);
+scope=$currentBranch;
+
+if [ "$currentBranch" != "develop" ] && [ "$currentBranch" != "master" ] && [ "$currentBranch" != "main" ]; then
+        scope=${currentBranch:8}; # get substring after "feature/"
+fi
+
+type=$1;
+
+shift 1;
+
+subject=$*;
+
+git commit -m "$type ($scope): $subject";
