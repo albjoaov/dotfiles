@@ -3,8 +3,8 @@
 currentBranch=$(git rev-parse --abbrev-ref HEAD);
 scope=$currentBranch;
 
-if [ "$currentBranch" != "develop" ] && [ "$currentBranch" != "master" ] && [ "$currentBranch" != "main" ]; then
-        scope=${currentBranch:8}; # get substring after "feature/"
+if [ "$currentBranch" != "develop" ] && [ "$currentBranch" != "master" ] && [ "$currentBranch" != "main" ] && [ "$currentBranch" != "forno" ]; then
+        scope=$(echo $currentBranch | cut -d'/' -f 2)
 fi
 
 type=$1;
