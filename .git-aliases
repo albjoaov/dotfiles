@@ -1,5 +1,6 @@
 [alias]
-    bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
+    bclean-master = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
+    bclean-main = "!f() { git branch --merged ${1-main} | grep -v " ${1-main}$" | xargs -r git branch -d; }; f"
     rui = "! ~/bash-scripts/git-remove-unused-imports"
     ruc = "! ~/bash-scripts/git-remove-unused-code"
     cbn = "! ~/bash-scripts/git-commit-with-branchNumber"
