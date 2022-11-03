@@ -13,4 +13,4 @@ shift 1;
 
 subject=$*;
 
-git commit -m "$type ($scope): $subject";
+git commit -m "$type($scope): $subject";
