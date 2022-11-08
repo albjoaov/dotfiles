@@ -5,8 +5,8 @@
     ruc = "! ~/bash-scripts/git-remove-unused-code"
     cbn = "! ~/bash-scripts/git-commit-with-branchNumber"
     new = "!f() { branchName=${1}; git ct develop && git pull && git cb $branchName;  }; f"
-    up = !git fetch && git merge origin/develop
-    upm = !git fetch && git merge origin/master
+	upmain = !git fetch && git merge origin/main
+	upmaster = !git fetch && git merge origin/master
     ps = push
     ct = checkout
     cb = checkout -b
