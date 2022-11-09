@@ -41,8 +41,10 @@ test = "! ~/bash-scripts/git-commit-with-branchNumber test"
 rui = "! ~/bash-scripts/git-remove-unused-imports"
 ruc = "! ~/bash-scripts/git-remove-unused-code"
 stash-staged = "! ~/bash-scripts/git-only-stash-staged"
+ct-sync-forno = "! ~/bash-scripts/git-ct-sync-forno"
+soft-kick-forno = "! ~/bash-scripts/git-soft-kick-forno"
 
-kick = "!f() { git push origin $(git rev-parse --abbrev-ref HEAD):$1 --force; }; f"
-forno = "!f() { git fetch && git checkout forno &&  git reset --hard origin/forno; }; f"
+sync-with-origin = "!f() { git reset --hard origin/$(git rev-parse --abbrev-ref HEAD); }; f"
+kick = "!f() { git push origin $(git rev-parse --abbrev-ref HEAD):$1 --force; }; f" # override branch
 bclean-master = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
 bclean-main = "!f() { git branch --merged ${1-main} | grep -v " ${1-main}$" | xargs -r git branch -d; }; f"

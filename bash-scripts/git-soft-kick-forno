@@ -1,0 +1,6 @@
+#!/bin/bash
+currentBranch=$(git rev-parse --abbrev-ref HEAD)
+git ct-sync-forno
+git merge $currentBranch
+git ps
+git ct $currentBranch
