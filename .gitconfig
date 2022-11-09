@@ -22,7 +22,7 @@ cb = checkout -b
 st = status -sb
 lg = log --pretty=format:'%Cred%h%Creset %C(bold)%cr%Creset %Cgreen<%an>%Creset %s' --max-count=30
 
-wip = commit -am "WIP"
+wip = !git add . && git commit -am "WIP"
 bwip = reset HEAD~1
 upmain = !git fetch && git merge origin/main
 upmaster = !git fetch && git merge origin/master
