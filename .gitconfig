@@ -35,6 +35,7 @@ undo = checkout --
 cbn = "! ~/bash-scripts/git-commit-with-branchNumber"
 feat = "! ~/bash-scripts/git-commit-with-branchNumber feat"
 chore = "! ~/bash-scripts/git-commit-with-branchNumber chore"
+ci = "! ~/bash-scripts/git-commit-with-branchNumber ci"
 fix = "! ~/bash-scripts/git-commit-with-branchNumber fix"
 docs = "! ~/bash-scripts/git-commit-with-branchNumber docs"
 test = "! ~/bash-scripts/git-commit-with-branchNumber test"
