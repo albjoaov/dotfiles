@@ -1,21 +1,32 @@
 [alias]
-    bclean-master = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
-    bclean-main = "!f() { git branch --merged ${1-main} | grep -v " ${1-main}$" | xargs -r git branch -d; }; f"
-    rui = "! ~/bash-scripts/git-remove-unused-imports"
-    ruc = "! ~/bash-scripts/git-remove-unused-code"
-    cbn = "! ~/bash-scripts/git-commit-with-branchNumber"
-    new = "!f() { branchName=${1}; git ct develop && git pull && git cb $branchName;  }; f"
-	upmain = !git fetch && git merge origin/main
-	upmaster = !git fetch && git merge origin/master
+    sandbox = "! ~/bash-scripts/git-sandbox"
     ps = push
     ct = checkout
     cb = checkout -b
     st = status -sb
-    sf = show --name-only
     lg = log --pretty=format:'%Cred%h%Creset %C(bold)%cr%Creset %Cgreen<%an>%Creset %s' --max-count=30
+
+    wip = commit -am "WIP"
+    bwip = reset HEAD~1
+    upmain = !git fetch && git merge origin/main
+	upmaster = !git fetch && git merge origin/master
+    rollback = reset --soft HEAD~1
+    unstage-all = reset HEAD --
     incoming = !(git fetch --quiet && git log --pretty=format:'%C(yellow)%h %C(white)- %C(red)%an %C(white)- %C(cyan)%d%Creset %s %C(white)- %ar%Creset' ..@{u})
     outgoing = !(git fetch --quiet && git log --pretty=format:'%C(yellow)%h %C(white)- %C(red)%an %C(white)- %C(cyan)%d%Creset %s %C(white)- %ar%Creset' @{u}..)
-    unstage = reset HEAD --
     undo = checkout --
-    rollback = reset --soft HEAD~1
+
+    cbn = "! ~/bash-scripts/git-commit-with-branchNumber"
+    feat = "! ~/bash-scripts/git-commit-with-branchNumber feat"
+	chore = "! ~/bash-scripts/git-commit-with-branchNumber chore"
+	fix = "! ~/bash-scripts/git-commit-with-branchNumber fix"
+	docs = "! ~/bash-scripts/git-commit-with-branchNumber docs"
+	test = "! ~/bash-scripts/git-commit-with-branchNumber test"
+    rui = "! ~/bash-scripts/git-remove-unused-imports"
+    ruc = "! ~/bash-scripts/git-remove-unused-code"
     stash-staged = "! ~/bash-scripts/git-only-stash-staged"
+
+    kick = "!f() { git push origin $(git rev-parse --abbrev-ref HEAD):$1 --force; }; f"
+    forno = "!f() { git fetch && git checkout forno &&  git reset --hard origin/forno; }; f"
+    bclean-master = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
+    bclean-main = "!f() { git branch --merged ${1-main} | grep -v " ${1-main}$" | xargs -r git branch -d; }; f"
