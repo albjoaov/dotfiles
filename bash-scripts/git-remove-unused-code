@@ -1,3 +1,3 @@
 #!/bin/bash
 
-git cbn refactor remove unnecessary code
+git cbn chore remove unnecessary code
