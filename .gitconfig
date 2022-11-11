@@ -50,3 +50,4 @@ sync-with-origin = "!f() { git reset --hard origin/$(git rev-parse --abbrev-ref 
 kick = "!f() { git push origin $(git rev-parse --abbrev-ref HEAD):$1 --force; }; f" # override branch
 bclean-master = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
 bclean-main = "!f() { git branch --merged ${1-main} | grep -v " ${1-main}$" | xargs -r git branch -d; }; f"
+show = "!git config -l | grep alias | cut -c 7-"
