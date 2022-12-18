@@ -36,6 +36,7 @@ undo = checkout --
 cbn = "! ~/bash-scripts/git-commit-with-branchNumber"
 feat = "! ~/bash-scripts/git-commit-with-branchNumber feat"
 chore = "! ~/bash-scripts/git-commit-with-branchNumber chore"
+refactor = "! ~/bash-scripts/git-commit-with-branchNumber chore"
 ci = "! ~/bash-scripts/git-commit-with-branchNumber ci"
 fix = "! ~/bash-scripts/git-commit-with-branchNumber fix"
 docs = "! ~/bash-scripts/git-commit-with-branchNumber docs"
@@ -50,4 +51,7 @@ sync-with-origin = "!f() { git reset --hard origin/$(git rev-parse --abbrev-ref 
 kick = "!f() { git push origin $(git rev-parse --abbrev-ref HEAD):$1 --force; }; f" # override branch
 bclean-master = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
 bclean-main = "!f() { git branch --merged ${1-main} | grep -v " ${1-main}$" | xargs -r git branch -d; }; f"
-show = "!git config -l | grep alias | cut -c 7-"
+ls = "!git config -l | grep alias | cut -c 7-"
+
+[core]
+editor = code --wait
