@@ -1,7 +1,10 @@
 # NVM path management from ansible BEGIN
 . ~/.nvm/nvm.sh
 # NVM path management from ansible END
-source ~/pyenv/.pyenvrc
+export PYENV_ROOT="/Users/joaoalbuquerque/pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 export DOCKER_CLIENT_TIMEOUT=120
 export COMPOSE_HTTP_TIMEOUT=120
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
