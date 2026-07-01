@@ -1,0 +1,165 @@
+{
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:repost.aws)",
+      "WebFetch(domain:aws.github.io)",
+
+      "Bash(cd *)",
+      "Bash(pwd)",
+      "Bash(ls*)",
+      "Bash(tree*)",
+      "Bash(find *)",
+      "Bash(fd *)",
+      "Bash(which *)",
+      "Bash(cat *)",
+      "Bash(head*)",
+      "Bash(tail*)",
+      "Bash(echo *)",
+      "Bash(env)",
+      "Bash(printenv*)",
+      "Bash(sed *)",
+      "Bash(grep*)",
+      "Bash(rg*)",
+      "Bash(mkdir *)",
+      "Bash(touch *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(diff *)",
+      "Bash(wc *)",
+      "Bash(sort*)",
+      "Bash(uniq*)",
+      "Bash(xargs *)",
+      "Bash(awk *)",
+      "Bash(jq *)",
+      "Bash(du *)",
+      "Bash(df*)",
+      "Bash(file *)",
+      "Bash(stat *)",
+      "Bash(date*)",
+      "Bash(timeout *)",
+
+      "Bash(git --version)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git show*)",
+      "Bash(git branch*)",
+      "Bash(git checkout*)",
+      "Bash(git switch*)",
+      "Bash(git restore*)",
+      "Bash(git add*)",
+      "Bash(git commit*)",
+      "Bash(git config*)",
+      "Bash(git stash*)",
+      "Bash(git blame*)",
+      "Bash(git tag*)",
+      "Bash(git remote -v)",
+      "Bash(git push*)",
+      "Bash(git fetch*)",
+      "Bash(git pull*)",
+
+      "Bash(python*)",
+      "Bash(pip*)",
+      "Bash(pytest*)",
+      "Bash(uv *)",
+      "Bash(uvx *)",
+      "Bash(poetry*)",
+
+      "Bash(java *)",
+      "Bash(javac *)",
+      "Bash(mvn *)",
+      "Bash(gradle*)",
+
+      "Bash(node*)",
+      "Bash(npm*)",
+      "Bash(pnpm*)",
+      "Bash(yarn*)",
+
+      "Bash(cargo*)",
+      "Bash(go *)",
+
+      "Bash(make*)",
+      "Bash(just*)",
+
+      "Bash(docker ps*)",
+      "Bash(docker images*)",
+      "Bash(docker logs*)",
+      "Bash(docker inspect*)",
+      "Bash(docker compose config*)",
+      "Bash(docker compose ps*)",
+      "Bash(docker compose logs*)",
+
+      "Bash(kubectl get*)",
+      "Bash(kubectl describe*)",
+      "Bash(kubectl logs*)",
+      "Bash(kubectl exec*)",
+      "Bash(kubectl port-forward*)",
+      "Bash(kubectl top*)",
+      "Bash(kubectl config get-contexts*)",
+      "Bash(kubectl config current-context)",
+
+      "Bash(terraform init*)",
+      "Bash(terraform version*)",
+      "Bash(terraform fmt*)",
+      "Bash(terraform validate*)",
+      "Bash(terraform plan*)",
+      "Bash(terraform show*)",
+      "Bash(terraform output*)",
+      "Bash(terraform state list*)",
+      "Bash(terraform state show*)",
+      "Bash(terraform workspace*)",
+
+      "Bash(databricks *)",
+      "Bash(pants*)"
+    ],
+    "deny": [
+      "Bash(sudo*)",
+      "Bash(su *)",
+
+      "Bash(git merge*)",
+      "Bash(git rebase*)",
+      "Bash(git reset --hard*)",
+
+      "Bash(terraform apply*)",
+      "Bash(terraform destroy*)",
+
+      "Bash(kubectl apply*)",
+      "Bash(kubectl delete*)",
+      "Bash(kubectl replace*)",
+      "Bash(kubectl patch*)",
+      "Bash(kubectl scale*)",
+
+      "Bash(docker rm*)",
+      "Bash(docker rmi*)",
+      "Bash(docker system prune*)",
+      "Bash(docker volume rm*)",
+
+      "Bash(curl*|sh*)",
+      "Bash(wget*|sh*)",
+      "Bash(curl*|bash*)",
+
+      "Bash(chmod -R 777*)",
+      "Bash(rm -rf /)",
+      "Bash(rm -rf ~)",
+      "Bash(rm -rf /*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
+      }
+    ]
+  },
+  "effortLevel": "high",
+  "theme": "auto"
+}
+
