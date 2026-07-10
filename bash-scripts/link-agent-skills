@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+DOTFILES_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+SKILLS_SOURCE="${DOTFILES_ROOT}/.cursor/skills"
+CURSOR_SKILLS_DIR="${HOME}/.cursor/skills"
+CLAUDE_SKILLS_DIR="${HOME}/.claude/skills"
+
+if [[ ! -d "${SKILLS_SOURCE}" ]]; then
+	echo "Skills source not found: ${SKILLS_SOURCE}" >&2
+	exit 1
+fi
+
+mkdir -p "${CURSOR_SKILLS_DIR}" "${CLAUDE_SKILLS_DIR}"
+
+linked=0
+for skill_path in "${SKILLS_SOURCE}"/*/; do
+	[[ -d "${skill_path}" ]] || continue
+	[[ -f "${skill_path}/SKILL.md" ]] || continue
+
+	skill_name="$(basename "${skill_path}")"
+	abs_skill_path="$(cd "${skill_path}" && pwd)"
+
+	ln -sfn "${abs_skill_path}" "${CURSOR_SKILLS_DIR}/${skill_name}"
+	ln -sfn "${abs_skill_path}" "${CLAUDE_SKILLS_DIR}/${skill_name}"
+
+	echo "linked ${skill_name}"
+	echo "  cursor -> ${CURSOR_SKILLS_DIR}/${skill_name}"
+	echo "  claude -> ${CLAUDE_SKILLS_DIR}/${skill_name}"
+	linked=$((linked + 1))
+done
+
+if [[ "${linked}" -eq 0 ]]; then
+	echo "No skills found under ${SKILLS_SOURCE}" >&2
+	exit 1
+fi
+
+echo ""
+echo "Done. ${linked} skill(s) linked for Cursor and Claude."
