@@ -18,7 +18,7 @@ Group pending changes into cohesive commits. Always end by writing `commit_group
 <type>(<scope>): <short description>
 ```
 
-- **scope:** ticket from branch (e.g. `MLOP-3471` from `feat/MLOP-3471`), else full branch name.
+- **scope:** ticket from branch (e.g. `PROJ-123` from `feat/PROJ-123`), else full branch name.
 - **type:** `feat` | `fix` | `docs` | `chore` | `test` | `refactor` | `ci` (pick primary intent).
 - Imperative mood, under 72 chars.
 
@@ -49,9 +49,9 @@ Group pending changes into cohesive commits. Always end by writing `commit_group
 
 ## Example
 
-Branch `feat/MLOP-3471`, files `docs/overview.md`, `docs/architecture.md`, `mkdocs.yml`, `src/lib/writer.py`:
+Branch `feat/PROJ-123`, files `docs/overview.md`, `docs/architecture.md`, `mkdocs.yml`, `src/lib/writer.py`:
 
 | # | Type | Files | Message |
 |---|------|-------|---------|
-| 1 | docs | docs/*, mkdocs.yml | docs(MLOP-3471): add architecture doc and update overview |
-| 2 | chore | src/lib/writer.py | chore(MLOP-3471): deprecate legacy writer path |
+| 1 | docs | docs/*, mkdocs.yml | docs(PROJ-123): add architecture doc and update overview |
+| 2 | chore | src/lib/writer.py | chore(PROJ-123): deprecate legacy writer path |

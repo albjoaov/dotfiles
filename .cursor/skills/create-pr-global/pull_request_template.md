@@ -15,9 +15,9 @@ _Second example_
 ### _..._
 
 ## Documentation Checklist :bookmark_tabs:
-- [ ] The [documentation](https://backstage.apps.core-prd.habitat.zone/docs/default/system/quintoml/) has been reviewed and updated (if necessary).
+- [ ] Relevant documentation has been reviewed and updated (if necessary).
 
-    _If your service/model/package doesn't have the documentation on Backstage, please migrate it. This can be done by creating the .md file within `docs/` folder and adding it to the `mkdocs.yml` navigation file._
+    _If documentation is missing, add or update the appropriate `.md` files and navigation entries (e.g. in `mkdocs.yml` when applicable)._
 
 ## How Has This Been Tested? :straight_ruler:
 <!--- Please describe in detail how you tested your changes. -->

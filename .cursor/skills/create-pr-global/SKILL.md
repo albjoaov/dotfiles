@@ -115,7 +115,7 @@ This step is **optional** and depends on the `jira` MCP being available. If it i
 ## Step 2: Determine Input Type
 
 1. First, determine the type of input provided:
-   - **PR Link/Number**: If input is a PR URL (e.g., `https://github.com/quintoandar/frontend-webapps/pull/123`) or just a number (e.g., `123` or `#123`), extract the PR number
+   - **PR Link/Number**: If input is a PR URL (e.g., `https://github.com/org/repo/pull/123`) or just a number (e.g., `123` or `#123`), extract the PR number
    - **Branch Name**: If input is a branch name, use the `show-pr-diff-on-create.sh` script to get the diff
    - **Auto**: Use the `show-pr-diff-on-create.sh` script without passing arguments. It will create the PR if needed and return the diff.
 
@@ -201,4 +201,4 @@ IMPORTANT NOTES
 GitHub CLI Installation Instructions:
 - macOS: `brew install gh` or download from https://cli.github.com/
 
-INPUT: @Branch (Diff with Main) OR PR Link/Number (e.g., https://github.com/quintoandar/frontend-webapps/pull/123 or just 123)
+INPUT: @Branch (Diff with Main) OR PR Link/Number (e.g., https://github.com/org/repo/pull/123 or just 123)

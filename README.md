@@ -7,7 +7,7 @@ Personal shell config and shared agent skills for Cursor and Claude Code.
 Clone and enter the repo:
 
 ```bash
-git clone git@github.com:quintoandar/dotfiles.git ~/projects/dotfiles
+git clone git@github.com:YOUR_USERNAME/dotfiles.git ~/projects/dotfiles
 cd ~/projects/dotfiles
 ```
 
