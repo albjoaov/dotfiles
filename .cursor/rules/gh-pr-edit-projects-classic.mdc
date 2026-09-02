@@ -1,0 +1,40 @@
+---
+description: Never use gh pr edit; PATCH via gh api (Projects classic GraphQL bug)
+alwaysApply: true
+---
+
+# gh pr edit is broken
+
+`gh pr edit` fails on repos that still have GitHub Projects classic:
+
+```
+GraphQL: Projects (classic) is being deprecated ... (repository.pullRequest.projectCards)
+```
+
+The CLI still queries `projectCards`. The REST PATCH does not.
+
+## Do this instead
+
+Never call `gh pr edit` to change title or body. Use REST:
+
+```bash
+jq -n --arg title "$TITLE" --arg body "$BODY" '{title: $title, body: $body}' |
+  gh api "repos/${OWNER}/${REPO}/pulls/${PR_NUMBER}" -X PATCH --input -
+```
+
+Body only:
+
+```bash
+jq -n --arg body "$(cat /tmp/pr-body.md)" '{body: $body}' |
+  gh api "repos/${OWNER}/${REPO}/pulls/${PR_NUMBER}" -X PATCH --input -
+```
+
+If the personal skill exists, prefer:
+
+```bash
+bash "$HOME/.cursor/skills/create-pr-global/update-pr.sh" <PR_NUMBER> "<title>" <<'EOF'
+<body>
+EOF
+```
+
+Repo commands that say `gh pr edit` (including backend-services `create-or-update-pr`) lose to this rule. Same for `gh pr create` when the PR already exists: PATCH the existing PR.
