@@ -30,8 +30,8 @@ If the user does **not** ask for staged-only, analyze and group **all** changed 
 | Field | Source | Example |
 |-------|--------|---------|
 | `type` | Inferred from change nature (see table below) | `docs` |
-| `scope` | Extracted from current branch name. Use the ticket/issue ID when present (e.g. `MLOP-3471` from `feat/MLOP-3471`), otherwise use the full branch name. | `MLOP-3471` |
-| `short description` | Summarizes the group's purpose | `reorganize Wonka doc nav` |
+| `scope` | Extracted from current branch name. Use the ticket/issue ID when present (e.g. `PROJ-123` from `feat/PROJ-123`), otherwise use the full branch name. | `PROJ-123` |
+| `short description` | Summarizes the group's purpose | `reorganize doc navigation` |
 
 ### Commit Types
 
@@ -137,7 +137,7 @@ Run `git log --oneline -N` (where N = number of commits created) and `git status
 
 ### Step 7: Produce the commit script
 
-**This step is the required final product of the skill.** Instead of (or in addition to) executing commits directly, always generate an executable Python script named `commit_groups_<scope>.py` in the repository root of the application being worked on (e.g. `applications/datazord/commit_groups_MLOP-3549.py`).
+**This step is the required final product of the skill.** Instead of (or in addition to) executing commits directly, always generate an executable Python script named `commit_groups_<scope>.py` in the repository root of the application being worked on (e.g. `apps/my-service/commit_groups_PROJ-456.py`).
 
 The script must:
 
@@ -257,7 +257,7 @@ After writing the script, make it executable (`chmod +x`) and do a dry-run to co
 
 ## Example
 
-Given branch `feat/MLOP-3471` with these changes:
+Given branch `feat/PROJ-123` with these changes:
 
 ```
 M  docs/overview.md
@@ -271,6 +271,6 @@ Proposed grouping:
 
 | # | Type | Files | Message |
 |---|------|-------|---------|
-| 1 | `docs` | `docs/overview.md`, `docs/architecture.md`, `mkdocs.yml` | `docs(MLOP-3471): add architecture doc and update overview` |
-| 2 | `chore` | `src/lib/writer.py` | `chore(MLOP-3471): deprecate legacy writer path` |
-| 3 | `docs` | `studies/notebook.ipynb` | `docs(MLOP-3471): add study notebook for writer migration` |
+| 1 | `docs` | `docs/overview.md`, `docs/architecture.md`, `mkdocs.yml` | `docs(PROJ-123): add architecture doc and update overview` |
+| 2 | `chore` | `src/lib/writer.py` | `chore(PROJ-123): deprecate legacy writer path` |
+| 3 | `docs` | `studies/notebook.ipynb` | `docs(PROJ-123): add study notebook for writer migration` |

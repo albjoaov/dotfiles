@@ -7,7 +7,7 @@ Personal shell config and shared agent skills for Cursor and Claude Code.
 Clone and enter the repo:
 
 ```bash
-git clone git@github.com:quintoandar/dotfiles.git ~/projects/dotfiles
+git clone git@github.com:YOUR_USERNAME/dotfiles.git ~/projects/dotfiles
 cd ~/projects/dotfiles
 ```
 
@@ -61,23 +61,47 @@ Current skills:
 - `smart-commit-grouping`
 - `smart-commit-grouping-lite`
 
-### 4. Verify
+### 4. Agent rules (Cursor + Claude)
+
+Always-on rules live in `.cursor/rules/` (`.mdc` files). Link them into:
+
+- `~/.cursor/rules/` (Cursor)
+- `~/.claude/rules/` (Claude Code)
+
+```bash
+bash bash-scripts/link-agent-rules
+```
+
+Or, with `bash-scripts/` linked to `~/`:
+
+```bash
+link-agent-rules
+```
+
+Current rules:
+
+- `gh-pr-edit-projects-classic` — never use `gh pr edit`; PATCH PR title/body via `gh api` (Projects classic GraphQL bug)
+
+### 5. Verify
 
 ```bash
 ls -la ~/.cursor/skills/create-pr-global
 ls -la ~/.claude/skills/create-pr-global
+ls -la ~/.cursor/rules/gh-pr-edit-projects-classic.mdc
+ls -la ~/.claude/rules/gh-pr-edit-projects-classic.mdc
 ```
 
-Both should point to your dotfiles clone. Restart Cursor or Claude Code if a session was already open.
+All should point to your dotfiles clone. Restart Cursor or Claude Code if a session was already open.
 
-## Updating skills
+## Updating skills and rules
 
-Edit files under `.cursor/skills/` in this repo, commit, push, then on other machines:
+Edit files under `.cursor/skills/` or `.cursor/rules/` in this repo, commit, push, then on other machines:
 
 ```bash
 cd ~/projects/dotfiles
 git pull
 link-agent-skills
+link-agent-rules
 ```
 
-No re-link is needed if symlinks already point at dotfiles; `git pull` is enough. Re-run `link-agent-skills` only when adding a new skill folder.
+No re-link is needed if symlinks already point at dotfiles; `git pull` is enough. Re-run the link scripts only when adding a new skill folder or rule file.

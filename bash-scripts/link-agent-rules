@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+DOTFILES_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+RULES_SOURCE="${DOTFILES_ROOT}/.cursor/rules"
+CURSOR_RULES_DIR="${HOME}/.cursor/rules"
+CLAUDE_RULES_DIR="${HOME}/.claude/rules"
+
+if [[ ! -d "${RULES_SOURCE}" ]]; then
+	echo "Rules source not found: ${RULES_SOURCE}" >&2
+	exit 1
+fi
+
+mkdir -p "${CURSOR_RULES_DIR}" "${CLAUDE_RULES_DIR}"
+
+linked=0
+for rule_path in "${RULES_SOURCE}"/*.mdc; do
+	[[ -f "${rule_path}" ]] || continue
+
+	rule_name="$(basename "${rule_path}")"
+	abs_rule_path="$(cd "$(dirname "${rule_path}")" && pwd)/$(basename "${rule_path}")"
+
+	ln -sfn "${abs_rule_path}" "${CURSOR_RULES_DIR}/${rule_name}"
+	ln -sfn "${abs_rule_path}" "${CLAUDE_RULES_DIR}/${rule_name}"
+
+	echo "linked ${rule_name}"
+	echo "  cursor -> ${CURSOR_RULES_DIR}/${rule_name}"
+	echo "  claude -> ${CLAUDE_RULES_DIR}/${rule_name}"
+	linked=$((linked + 1))
+done
+
+if [[ "${linked}" -eq 0 ]]; then
+	echo "No rules found under ${RULES_SOURCE}" >&2
+	exit 1
+fi
+
+echo ""
+echo "Done. ${linked} rule(s) linked for Cursor and Claude."
